@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brief del Embajador Digital · Aeroméxico × ARDE</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="description" content="Formulario de definición del Embajador Digital de Aeroméxico. Por ARDE Agency.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ardeagency.github.io/aeromexico-brief-embajador/">
+<meta property="og:title" content="Brief del Embajador Digital · Aeroméxico">
+<meta property="og:description" content="Definición de identidad: rostro, piel, vestuario, voz y escenarios. Por ARDE Agency.">
+<meta property="og:image" content="https://ardeagency.github.io/aeromexico-brief-embajador/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Archivo:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-0:#040d1f;--navy-1:#071630;--navy-2:#0b2343;--navy-3:#12315c;
+  --ink:#0b2343;--slate:#3a4a6b;--paper:#f4f1ea;--paper-2:#ece7dc;--white:#fff;
+  --red:#e4002b;--red-soft:#ff5d77;--gold:#c9a96a;--mist:#a9b9dc;--mist-2:#7385ac;
+  --line:rgba(11,35,67,.16);--line-d:rgba(255,255,255,.14);
+  --fd:'Fraunces',Georgia,serif;--fb:'Archivo',system-ui,sans-serif;--fm:'Space Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--navy-1);color:var(--ink);-webkit-font-smoothing:antialiased}
+::selection{background:var(--red);color:#fff}
+h1,h2,h3{font-family:var(--fd);font-weight:480;line-height:1.07;letter-spacing:-.01em}
+em{font-style:italic;color:var(--gold)}
+.wrap{max-width:900px;margin:0 auto;padding:0 26px}
+
+/* progress */
+.bar{position:fixed;top:0;left:0;right:0;height:4px;background:rgba(255,255,255,.08);z-index:200}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--gold));transition:width .4s}
+.pct{position:fixed;top:12px;right:18px;z-index:201;font-family:var(--fm);font-size:.62rem;letter-spacing:.1em;color:#fff;background:rgba(4,13,31,.7);padding:5px 11px;border-radius:30px;backdrop-filter:blur(8px)}
+
+/* hero */
+.hero{background:radial-gradient(120% 90% at 80% 0%,#12315c55,transparent 60%),linear-gradient(160deg,var(--navy-0),var(--navy-2));color:#fff;padding:96px 0 70px}
+.flight{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--fm);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mist);margin-bottom:26px}
+.flight b{color:#fff}
+.hero h1{font-size:clamp(2.1rem,5.2vw,3.6rem);max-width:16ch}
+.hero h1 em{color:var(--red-soft)}
+.hero p{color:#cdd9f2;max-width:62ch;margin-top:20px;line-height:1.6;font-size:clamp(1rem,1.6vw,1.15rem)}
+.synthnote{margin-top:24px;border-left:3px solid var(--gold);background:rgba(201,169,106,.12);padding:13px 18px;border-radius:0 10px 10px 0;font-size:.9rem;color:#eee;max-width:64ch}
+.synthnote b{color:#fff}
+
+/* form body */
+.formwrap{background:var(--paper);padding:54px 0 90px}
+.sec{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 30px 26px;margin-bottom:20px;box-shadow:0 10px 30px -22px rgba(11,35,67,.4)}
+.sec-h{display:flex;align-items:center;gap:14px;margin-bottom:22px;border-bottom:1px solid var(--line);padding-bottom:16px}
+.sec-h .nn{font-family:var(--fm);font-size:.95rem;font-weight:700;color:#fff;background:var(--navy-2);width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.sec-h h2{font-size:1.4rem;color:var(--ink)}
+.sec-h .sub{font-family:var(--fm);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-top:3px}
+.field{margin-bottom:20px}
+.field:last-child{margin-bottom:4px}
+.field label.q{display:block;font-weight:600;font-size:.95rem;color:var(--ink);margin-bottom:4px}
+.field .hint{font-size:.8rem;color:var(--mist-2);margin-bottom:9px;line-height:1.4}
+input[type=text],input[type=date],textarea,select{width:100%;font-family:var(--fb);font-size:.96rem;color:var(--ink);background:#fbfaf6;border:1px solid var(--line);border-radius:10px;padding:12px 14px;transition:border .2s,box-shadow .2s,background .2s}
+textarea{min-height:78px;resize:vertical;line-height:1.5}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--red);background:#fff;box-shadow:0 0 0 3px rgba(228,0,43,.12)}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{position:relative;cursor:pointer;user-select:none}
+.chip input{position:absolute;opacity:0;width:0;height:0}
+.chip span{display:inline-block;border:1px solid var(--line);border-radius:30px;padding:9px 16px;font-size:.88rem;color:var(--slate);background:#fbfaf6;transition:.18s}
+.chip:hover span{border-color:var(--mist-2)}
+.chip input:checked + span{background:var(--navy-2);border-color:var(--navy-2);color:#fff;font-weight:600}
+.chip.r input:checked + span{background:var(--red);border-color:var(--red)}
+.savednote{font-family:var(--fm);font-size:.6rem;letter-spacing:.08em;color:var(--mist-2);text-align:center;margin:6px 0 26px;text-transform:uppercase}
+
+/* submit */
+.submit-row{text-align:center;margin-top:34px}
+.btn{font-family:var(--fb);font-weight:700;font-size:1rem;letter-spacing:.02em;border:none;cursor:pointer;background:var(--red);color:#fff;padding:18px 46px;border-radius:40px;transition:transform .2s,box-shadow .2s;box-shadow:0 12px 30px -8px rgba(228,0,43,.5)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px rgba(228,0,43,.6)}
+.btn.sec2{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none;font-size:.9rem;padding:13px 26px}
+.btn.sec2:hover{border-color:var(--navy-2);transform:translateY(-2px)}
+.subhint{font-size:.8rem;color:var(--mist-2);margin-top:14px}
+
+/* success overlay */
+.ov{position:fixed;inset:0;z-index:400;background:rgba(4,13,31,.92);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:24px}
+.ov.on{display:flex}
+.ovcard{background:var(--paper);border-radius:18px;max-width:560px;width:100%;padding:40px 34px;text-align:center;max-height:90vh;overflow:auto}
+.ovcard .ck{width:64px;height:64px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 18px}
+.ovcard h3{font-size:1.7rem;color:var(--ink)}
+.ovcard p{color:var(--slate);margin-top:12px;line-height:1.55;font-size:.95rem}
+.ovbtns{display:flex;flex-direction:column;gap:11px;margin-top:26px}
+.ovbtns a,.ovbtns button{font-family:var(--fb);font-weight:700;font-size:.95rem;cursor:pointer;border:none;border-radius:40px;padding:15px 20px;text-decoration:none;text-align:center;transition:transform .15s}
+.ovbtns a:hover,.ovbtns button:hover{transform:translateY(-2px)}
+.wa{background:#25d366;color:#fff}
+.cp{background:var(--navy-2);color:#fff}
+.dl{background:transparent;color:var(--ink);border:1.5px solid var(--line)!important}
+
+footer{background:var(--navy-0);color:var(--mist);text-align:center;padding:40px 0;font-size:.78rem;line-height:1.8}
+footer b{color:var(--red-soft);font-family:var(--fm);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase}
+@media(max-width:560px){.sec{padding:24px 20px}.hero{padding:80px 0 56px}}
+</style>
+</head>
+<body>
+<div class="bar"><i id="barI"></i></div>
+<div class="pct" id="pct">0% completado</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="flight"><span>AEROMÉXICO <b>×</b> ARDE</span><span>FASE 1 <b>· EMBAJADOR DIGITAL</b></span><span><b>BRIEF DE IDENTIDAD</b></span></div>
+    <h1>Brief del <em>Embajador Digital</em></h1>
+    <p>Este formulario define la identidad del embajador: rostro, piel, vestuario, voz y escenarios. Mientras más detalle nos den, más preciso será el resultado. Si no tienen una definición para algún punto, déjenlo en blanco o escriban "abierto a propuesta de ARDE".</p>
+    <div class="synthnote">El embajador es un personaje <b>100% sintético</b>, diseñado desde cero y en exclusiva para Aeroméxico. No se clona a ninguna persona real. Una vez aprobado, su identidad se bloquea (<b>Identity Lock</b>) y se mantiene idéntica en las 24 piezas.</div>
+  </div>
+</header>
+
+<div class="formwrap">
+  <div class="wrap">
+    <div class="savednote" id="savednote">Tus respuestas se guardan solas en este dispositivo</div>
+    <form id="brief">
+
+      <section class="sec">
+        <div class="sec-h"><div class="nn">1</div><div><div class="sub">Datos generales</div><h2>Quién llena el brief</h2></div></div>
+        <div class="field" data-q="Responsable que completa"><label class="q">Responsable que completa el brief</label><input type="text"></div>
+        <div class="field" data-q="Aprobadores"><label class="q">¿Quién(es) aprueba(n) personaje, voz y escenarios?</label><input type="text"></div>
+        <div class="field" data-q="Fecha"><label class="q">Fecha</label><input type="date"></div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><div class="nn">2</div><div><div class="sub">Esencia</div><h2>Qué debe transmitir</h2></div></div>
+        <div class="field" data-q="Qué transmite en una frase"><label class="q">¿Qué debe transmitir el embajador en una frase?</label><div class="hint">Ej. confianza, cercanía, modernidad, autoridad amable.</div><input type="text"></div>
+        <div class="field" data-q="3 adjetivos"><label class="q">3 adjetivos de personalidad</label><input type="text"></div>
+        <div class="field" data-q="Tono"><label class="q">¿Más institucional/formal o cercano/cálido?</label><div class="chips">
+          <label class="chip"><input type="radio" name="tono" value="Institucional / formal"><span>Institucional / formal</span></label>
+          <label class="chip"><input type="radio" name="tono" value="Equilibrado"><span>Equilibrado</span></label>
+          <label class="chip"><input type="radio" name="tono" value="Cercano / cálido"><span>Cercano / cálido</span></label>
+        </div></div>
+        <div class="field" data-q="A quién le habla"><label class="q">¿A quién le habla?</label><div class="hint">Perfil de la audiencia interna (áreas, niveles, equipos Agile).</div><textarea></textarea></div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><div class="nn">3</div><div><div class="sub">Género, edad y fenotipo</div><h2>Quién es</h2></div></div>
+        <div class="field" data-q="Género"><label class="q">¿Hombre, mujer u otra opción?</label><div class="chips">
+          <label class="chip"><input type="radio" name="genero" value="Hombre"><span>Hombre</span></label>
+          <label class="chip"><input type="radio" name="genero" value="Mujer"><span>Mujer</span></label>
+          <label class="chip"><input type="radio" name="genero" value="Otra opción"><span>Otra opción</span></label>
+          <label class="chip"><input type="radio" name="genero" value="Abierto a propuesta de ARDE"><span>Abierto a propuesta</span></label>
+        </div></div>
+        <div class="field" data-q="Rango de edad aparente"><label class="q">Rango de edad aparente</label><input type="text" placeholder="Ej. 30 a 40 años"></div>
+        <div class="field" data-q="Fenotipo / representación"><label class="q">Fenotipo / representación</label><div class="hint">Alineado a la diversidad de Aeroméxico / México.</div><textarea></textarea></div>
+        <div class="field" data-q="Complexión / estatura percibida"><label class="q">Complexión / estatura percibida</label><input type="text"></div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><div class="nn">4</div><div><div class="sub">Rostro y piel</div><h2>El detalle del rostro</h2></div></div>
+        <div class="field" data-q="Forma de rostro"><label class="q">Forma de rostro</label><input type="text" placeholder="Ovalado, anguloso, redondo..."></div>
+        <div class="field" data-q="Tono de piel"><label class="q">Tono de piel</label><input type="text"></div>
+        <div class="field" data-q="Textura / edad de la piel"><label class="q">Textura / edad de la piel</label><div class="chips">
+          <label class="chip"><input type="radio" name="piel" value="Joven y tersa"><span>Joven y tersa</span></label>
+          <label class="chip"><input type="radio" name="piel" value="Adulta con líneas naturales"><span>Adulta, líneas naturales</span></label>
+          <label class="chip"><input type="radio" name="piel" value="Madura"><span>Madura</span></label>
+        </div></div>
+        <div class="field" data-q="Rasgos destacados"><label class="q">Rasgos destacados</label><div class="hint">Cejas, mandíbula, ojos, sonrisa, lo que quieran resaltar.</div><textarea></textarea></div>
+        <div class="field" data-q="Expresión base"><label class="q">Expresión base</label><div class="chips">
+          <label class="chip"><input type="radio" name="expr" value="Seria / profesional"><span>Seria / profesional</span></label>
+          <label class="chip"><input type="radio" name="expr" value="Sonrisa leve"><span>Sonrisa leve</span></label>
+          <label class="chip"><input type="radio" name="expr" value="Amable y abierta"><span>Amable y abierta</span></label>
+        </div></div>
+        <div class="field" data-q="Detalles (lentes, vello, pecas, maquillaje)"><label class="q">¿Lentes? ¿Vello facial? ¿Pecas/lunares? ¿Maquillaje?</label><input type="text"></div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><div class="nn">5</div><div><div class="sub">Cabello</div><h2>El cabello</h2></div></div>
+        <div class="field" data-q="Estilo / corte"><label class="q">Estilo / corte</label><input type="text"></div>
+        <div class="field" data-q="Color de cabello"><label class="q">Color</label><input type="text"></div>
+        <div class="field" data-q="Largo / peinado"><label class="q">Largo / peinado</label><input type="text" placeholder="Recogido, suelto, corto..."></div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><div class="nn">6</div><div><div class="sub">Vestuario</div><h2>Cómo viste</h2></div></div>
+        <div class="field" data-q="Tipo de vestuario"><label class="q">¿Qué vestuario? (pueden elegir varios)</label><div class="chips">
+          <label class="chip"><input type="checkbox" name="vest" value="Uniforme Aeroméxico"><span>Uniforme Aeroméxico</span></label>
+          <label class="chip"><input type="checkbox" name="vest" value="Business"><span>Business</span></label>
+          <label class="chip"><input type="checkbox" name="vest" value="Smart casual"><span>Smart casual</span></label>
+        </div></div>
+        <div class="field" data-q="Uniforme oficial + guideline"><label class="q">¿Usa el uniforme oficial? ¿Nos comparten el guideline del uniforme?</label><input type="text"></div>
+        <div class="field" data-q="Paleta de vestuario"><label class="q">Paleta de colores del vestuario</label><input type="text"></div>
+        <div class="field" data-q="Accesorios"><label class="q">Accesorios</label><div class="hint">Pin, gafete, mascada, reloj...</div><input type="text"></div>
+        <div class="field" data-q="Vestuario fijo o variable"><label class="q">¿El vestuario es fijo o varía por módulo?</label><div class="chips">
+          <label class="chip"><input type="radio" name="vestfijo" value="Fijo"><span>Fijo</span></label>
+          <label class="chip"><input type="radio" name="vestfijo" value="Varía por módulo"><span>Varía por módulo</span></label>
+        </div></div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><div class="nn">7</div><div><div class="sub">Voz</div><h2>Cómo suena</h2></div></div>
+        <div class="field" data-q="Género y edad de la voz"><label class="q">Género y edad de la voz</label><input type="text"></div>
+        <div class="field" data-q="Tono de voz"><label class="q">Tono</label><div class="chips">
+          <label class="chip"><input type="checkbox" name="vtono" value="Cálido"><span>Cálido</span></label>
+          <label class="chip"><input type="checkbox" name="vtono" value="Autoritario"><span>Autoritario</span></label>
+          <label class="chip"><input type="checkbox" name="vtono" value="Cercano"><span>Cercano</span></label>
+          <label class="chip"><input type="checkbox" name="vtono" value="Enérgico"><span>Enérgico</span></label>
+          <label class="chip"><input type="checkbox" name="vtono" value="Sereno"><span>Sereno</span></label>
+        </div></div>
+        <div class="field" data-q="Ritmo"><label class="q">Ritmo</label><div class="chips">
+          <label class="chip"><input type="radio" name="ritmo" value="Pausado"><span>Pausado</span></label>
+          <label class="chip"><input type="radio" name="ritmo" value="Dinámico"><span>Dinámico</span></label>
+        </div></div>
+        <div class="field" data-q="Acento"><label class="q">Acento</label><input type="text" placeholder="Mexicano neutro..."></div>
+        <div class="field" data-q="Idiomas requeridos"><label class="q">Idiomas requeridos (además del español)</label><input type="text"></div>
+        <div class="field" data-q="Referencia de voz"><label class="q">Referencia de voz (link o persona)</label><input type="text"></div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><div class="nn">8</div><div><div class="sub">Escenarios</div><h2>Dónde vive</h2></div></div>
+        <div class="field" data-q="Escenarios deseados"><label class="q">¿Qué escenarios quieren? (varios)</label><div class="chips">
+          <label class="chip"><input type="checkbox" name="esc" value="Estudio de marca"><span>Estudio de marca</span></label>
+          <label class="chip"><input type="checkbox" name="esc" value="Sala de transformación digital"><span>Sala de transformación</span></label>
+          <label class="chip"><input type="checkbox" name="esc" value="Cabina de avión"><span>Cabina de avión</span></label>
+          <label class="chip"><input type="checkbox" name="esc" value="Hangar"><span>Hangar</span></label>
+          <label class="chip"><input type="checkbox" name="esc" value="Sala de abordaje"><span>Sala de abordaje</span></label>
+          <label class="chip"><input type="checkbox" name="esc" value="Torre de control"><span>Torre de control</span></label>
+          <label class="chip"><input type="checkbox" name="esc" value="Oficinas"><span>Oficinas</span></label>
+        </div></div>
+        <div class="field" data-q="Escenario principal"><label class="q">Escenario principal / recurrente</label><input type="text"></div>
+        <div class="field" data-q="Mood / ambientación"><label class="q">Mood / ambientación</label><input type="text" placeholder="Moderno, cálido, corporativo, aspiracional..."></div>
+        <div class="field" data-q="Branding en escenario"><label class="q">¿Branding visible en el escenario? (logos, colores)</label><div class="chips">
+          <label class="chip r"><input type="radio" name="brand" value="Sí, branding visible"><span>Sí</span></label>
+          <label class="chip"><input type="radio" name="brand" value="Sutil"><span>Sutil</span></label>
+          <label class="chip"><input type="radio" name="brand" value="No"><span>No</span></label>
+        </div></div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><div class="nn">9</div><div><div class="sub">Marca y lineamientos</div><h2>El ADN visual</h2></div></div>
+        <div class="field" data-q="Link brandbook / key visuals"><label class="q">Link al brandbook / key visuals / guidelines</label><input type="text"></div>
+        <div class="field" data-q="Paleta oficial"><label class="q">Paleta de colores oficial</label><input type="text"></div>
+        <div class="field" data-q="Tipografías"><label class="q">Tipografías</label><input type="text"></div>
+        <div class="field" data-q="Do's"><label class="q">Do's — lo que SÍ debe sentir/parecer</label><textarea></textarea></div>
+        <div class="field" data-q="Don'ts"><label class="q">Don'ts — lo que NO debe parecer</label><textarea></textarea></div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><div class="nn">10</div><div><div class="sub">Referencias y restricciones</div><h2>Referencias</h2></div></div>
+        <div class="field" data-q="Referencias que gustan"><label class="q">Personajes / estilos que les gustan</label><div class="hint">Links o descripciones.</div><textarea></textarea></div>
+        <div class="field" data-q="Lo que NO quieren"><label class="q">Personajes / estilos que NO quieren</label><textarea></textarea></div>
+        <div class="field" data-q="Inclusión / diversidad"><label class="q">Lineamientos de inclusión / diversidad</label><textarea></textarea></div>
+        <div class="field" data-q="Restricciones legales o de marca"><label class="q">Restricciones legales o de marca</label><textarea></textarea></div>
+      </section>
+
+      <div class="submit-row">
+        <button type="button" class="btn" id="enviar">Enviar brief a ARDE →</button>
+        <div class="subhint">Al enviar, generamos el resumen y lo recibimos en ARDE. También podrás enviarlo por WhatsApp o descargarlo.</div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="ov" id="ov">
+  <div class="ovcard">
+    <div class="ck">✓</div>
+    <h3>Brief listo</h3>
+    <p>Recibimos tu información en ARDE. Para confirmar el envío, mándalo también por WhatsApp o descárgalo y compártelo con nosotros.</p>
+    <div class="ovbtns">
+      <a class="wa" id="wa" href="#" target="_blank" rel="noopener">Enviar por WhatsApp a ARDE</a>
+      <button class="cp" id="cp">Copiar resumen</button>
+      <button class="dl" id="dl">Descargar (.txt)</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <b>AI Craft · Human Vision</b><br>
+  ARDE AGENCY S.A.S · contact@ardeagency.com · ardeagency.com<br>
+  Brief Fase 1 · Embajador Digital Aeroméxico
+</footer>
+
+<script>
+var KEY='arde_brief_aeromx';
+var fields=[].slice.call(document.querySelectorAll('.field'));
+/* autosave + restore */
+function save(){var d={};document.querySelectorAll('#brief input,#brief textarea,#brief select').forEach(function(el,i){
+  var k=el.name?('n_'+el.name+'_'+el.value):('i_'+i);
+  if(el.type==='checkbox'||el.type==='radio'){if(el.checked)d[k]=1;}else{d['i_'+i]=el.value;}
+});try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}}
+function restore(){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');
+  document.querySelectorAll('#brief input,#brief textarea,#brief select').forEach(function(el,i){
+    if(el.type==='checkbox'||el.type==='radio'){var k='n_'+el.name+'_'+el.value;if(d[k])el.checked=true;}
+    else if(d['i_'+i]!==undefined)el.value=d['i_'+i];
+  });}catch(e){}}
+function progress(){
+  var done=0;fields.forEach(function(f){
+    var ins=f.querySelectorAll('input,textarea,select');var ok=false;
+    ins.forEach(function(el){if(el.type==='checkbox'||el.type==='radio'){if(el.checked)ok=true;}else if(el.value.trim())ok=true;});
+    if(ok)done++;});
+  var p=Math.round(done/fields.length*100);
+  document.getElementById('barI').style.width=p+'%';
+  document.getElementById('pct').textContent=p+'% completado';
+}
+function compile(){
+  var out='BRIEF DEL EMBAJADOR DIGITAL · AEROMÉXICO\n(generado desde el formulario ARDE)\n\n';
+  document.querySelectorAll('#brief .sec').forEach(function(sec){
+    var t=sec.querySelector('h2').textContent;out+='— '+t.toUpperCase()+' —\n';
+    sec.querySelectorAll('.field').forEach(function(f){
+      var q=f.getAttribute('data-q');var vals=[];
+      f.querySelectorAll('input,textarea,select').forEach(function(el){
+        if(el.type==='checkbox'||el.type==='radio'){if(el.checked)vals.push(el.value);}
+        else if(el.value.trim())vals.push(el.value.trim());});
+      out+='• '+q+': '+(vals.length?vals.join(', '):'(sin responder)')+'\n';
+    });out+='\n';
+  });return out;
+}
+document.querySelectorAll('#brief input,#brief textarea,#brief select').forEach(function(el){
+  el.addEventListener('input',function(){save();progress();});
+  el.addEventListener('change',function(){save();progress();});
+});
+restore();progress();
+
+var lastText='';
+document.getElementById('enviar').addEventListener('click',function(){
+  lastText=compile();
+  /* enviar a ARDE via ntfy */
+  try{fetch('https://ntfy.sh/arde-cotizaciones-7k2pqz9x',{method:'POST',keepalive:true,
+    headers:{'Title':'Brief Embajador - Aeromexico COMPLETADO','Tags':'tada,memo'},
+    body:lastText.slice(0,3500)});}catch(e){}
+  var msg='Hola ARDE, aquí está el brief del embajador de Aeroméxico:%0A%0A'+encodeURIComponent(lastText).replace(/%2520/g,'%20');
+  document.getElementById('wa').href='https://wa.me/573218300088?text='+msg;
+  document.getElementById('ov').classList.add('on');
+});
+document.getElementById('cp').addEventListener('click',function(){
+  navigator.clipboard.writeText(lastText).then(function(){var b=document.getElementById('cp');b.textContent='¡Copiado!';setTimeout(function(){b.textContent='Copiar resumen';},1800);});
+});
+document.getElementById('dl').addEventListener('click',function(){
+  var a=document.createElement('a');a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(lastText);
+  a.download='Brief_Embajador_Aeromexico.txt';a.click();
+});
+document.getElementById('ov').addEventListener('click',function(e){if(e.target===this)this.classList.remove('on');});
+</script>
+<script>
+/* ARDE tracking v2: filtro de bots + gate humano + apertura + heatmap (ntfy) */
+(function(){try{
+  var TOPIC='https://ntfy.sh/arde-cotizaciones-7k2pqz9x',LABEL='Brief Embajador Aeromexico',KEY='briefaeromx';
+  var ua=navigator.userAgent||'';
+  if(navigator.webdriver===true||/bot\b|crawl|spider|slurp|bingbot|headless|phantom|puppeteer|playwright|python-|curl\/|wget|facebookexternalhit|whatsapp|telegrambot|slackbot|twitterbot|linkedinbot|googlebot|applebot|lighthouse|pingdom|semrush|ahrefs|bytespider|gptbot/i.test(ua))return;
+  var who=(location.search.match(/[?&]to=([^&]+)/)||[])[1];who=who?decodeURIComponent(who.replace(/\+/g,' ')):'';
+  var whoLine=who?('\nDestinatario: '+who):'';
+  function post(t,tg,b){try{fetch(TOPIC,{method:'POST',keepalive:true,headers:{'Title':t,'Tags':tg},body:b});}catch(e){try{navigator.sendBeacon(TOPIC,b);}catch(e2){}}}
+  var inter=false;['scroll','mousemove','touchstart','keydown','pointerdown'].forEach(function(ev){window.addEventListener(ev,function(){inter=true;},{passive:true});});
+  var vis=0,lv=Date.now();function vt(){if(document.visibilityState==='visible')vis+=Date.now()-lv;lv=Date.now();}setInterval(vt,1000);
+  var sent=false;var gi=setInterval(function(){vt();if(sent)return;if((inter&&vis>=2500)||vis>=9000){sent=true;clearInterval(gi);
+    fetch('https://ipapi.co/json/').then(function(r){return r.json();}).then(function(d){
+      post('ARDE - Abrieron: '+LABEL,'eyes','Abrieron el formulario: '+LABEL+whoLine+'\nUbicacion: '+(d.city||'?')+', '+(d.country_name||'?')+'\nDispositivo: '+ua.slice(0,80));
+    }).catch(function(){post('ARDE - Abrieron: '+LABEL,'eyes','Abrieron el formulario: '+LABEL+whoLine);});
+  }},1000);
+}catch(e){}})();
+</script>
+</body>
+</html>
