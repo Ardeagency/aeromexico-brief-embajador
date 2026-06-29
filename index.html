@@ -295,22 +295,30 @@ restore();progress();
 var lastText='';
 document.getElementById('enviar').addEventListener('click',function(){
   var btn=this; lastText=compile();
-  var fileInputs=[].slice.call(document.querySelectorAll('input[type=file]'));
-  var nf=0;fileInputs.forEach(function(i){nf+=i.files?i.files.length:0;});
-  try{fetch('https://ntfy.sh/arde-cotizaciones-7k2pqz9x',{method:'POST',keepalive:true,headers:{'Title':'Brief Embajador - Aeromexico COMPLETADO','Tags':'tada,memo'},body:lastText.slice(0,3500)});}catch(e){}
-  document.getElementById('wa').href='https://wa.me/573218300088?text='+encodeURIComponent('Hola ARDE, aqui esta el brief del embajador de Aeromexico:\n\n'+lastText);
   var fd=new FormData();
   fd.append('access_key','2d2d2da2-83b7-4fb5-9c56-30d4c46c92f5');
   fd.append('subject','Brief Embajador Digital - Aeromexico');
   fd.append('from_name','Formulario Embajador - Aeromexico');
-  fd.append('message',lastText);
-  fileInputs.forEach(function(inp,ix){[].slice.call(inp.files).forEach(function(f,k){fd.append('adjunto_'+ix+'_'+k,f,f.name);});});
+  fd.append('message','Brief del Embajador Digital - Aeromexico. Respuestas organizadas por seccion abajo; las imagenes adjuntas estan nombradas con la seccion a la que pertenecen.');
+  var qn=0,nf=0;
+  document.querySelectorAll('#brief .sec').forEach(function(sec){
+    var sl=sec.querySelector('.sub')?sec.querySelector('.sub').textContent.trim():(sec.querySelector('h2')?sec.querySelector('h2').textContent.trim():'');
+    sec.querySelectorAll('.field').forEach(function(f){
+      var q=f.getAttribute('data-q');var vals=[];var files=[];
+      f.querySelectorAll('input,textarea,select').forEach(function(el){
+        if(el.type==='file'){if(el.files)for(var z=0;z<el.files.length;z++)files.push(el.files[z]);}
+        else if(el.type==='checkbox'||el.type==='radio'){if(el.checked)vals.push(el.value);}
+        else if(el.value.trim())vals.push(el.value.trim());});
+      files.forEach(function(file,k){nf++;var pre=sl.toUpperCase().replace(/[^A-Z0-9]+/g,'_').replace(/^_|_+$/g,'');fd.append('file_'+nf,file,pre+'_'+(k+1)+'_'+file.name);vals.push('[imagen] '+file.name);});
+      if(vals.length){qn++;var key=('0'+qn).slice(-2)+') '+sl+' - '+q;fd.append(key,vals.join(', '));}});});
+  try{fetch('https://ntfy.sh/arde-cotizaciones-7k2pqz9x',{method:'POST',keepalive:true,headers:{'Title':'Brief Embajador - Aeromexico COMPLETADO','Tags':'tada,memo'},body:lastText.slice(0,3500)});}catch(e){}
+  document.getElementById('wa').href='https://wa.me/573218300088?text='+encodeURIComponent('Hola ARDE, aqui esta el brief del embajador de Aeromexico:\n\n'+lastText);
   btn.textContent='Enviando...';btn.disabled=true;
   fetch('https://api.web3forms.com/submit',{method:'POST',body:fd}).then(function(r){return r.json();}).catch(function(){return{success:false};}).then(function(res){
     btn.textContent='Enviar brief a ARDE →';btn.disabled=false;
     var note=document.getElementById('ovnote');
-    if(note){ if(res&&res.success){ note.innerHTML = nf>0 ? ('Tu brief y tus <b>'+nf+' archivo(s)</b> llegaron a ARDE por correo.') : 'Tu brief lleg&oacute; a ARDE por correo.'; }
-      else { note.innerHTML = '<b style="color:#e4002b">Correo no enviado'+((res&&res.message)?(': '+res.message):'')+'</b><br>Mientras, env&iacute;alo por <b>WhatsApp</b> o desc&aacute;rgalo'+(nf>0?' (adjunta tus '+nf+' archivo(s))':'')+'.'; } }
+    if(note){ if(res&&res.success){ note.innerHTML = nf>0 ? ('Tu brief y tus <b>'+nf+' imagen(es)/archivo(s)</b> llegaron a ARDE por correo, organizados por secci&oacute;n.') : 'Tu brief lleg&oacute; a ARDE por correo, organizado por secci&oacute;n.'; }
+      else { note.innerHTML = '<b style="color:#e4002b">Correo no enviado'+((res&&res.message)?(': '+res.message):'')+'</b><br>Env&iacute;alo por <b>WhatsApp</b> o desc&aacute;rgalo'+(nf>0?' (adjunta tus '+nf+' archivo(s))':'')+'.'; } }
     document.getElementById('ov').classList.add('on');
   });
 });
