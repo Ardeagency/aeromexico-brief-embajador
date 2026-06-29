@@ -295,22 +295,15 @@ restore();progress();
 var lastText='';
 document.getElementById('enviar').addEventListener('click',function(){
   var btn=this; lastText=compile();
-  var fileInputs=[].slice.call(document.querySelectorAll('input[type=file]'));
-  var nf=0;fileInputs.forEach(function(i){nf+=i.files?i.files.length:0;});
+  var nf=0;document.querySelectorAll('input[type=file]').forEach(function(i){nf+=i.files?i.files.length:0;});
   try{fetch('https://ntfy.sh/arde-cotizaciones-7k2pqz9x',{method:'POST',keepalive:true,headers:{'Title':'Brief Embajador - Aeromexico COMPLETADO','Tags':'tada,memo'},body:lastText.slice(0,3500)});}catch(e){}
   document.getElementById('wa').href='https://wa.me/573218300088?text='+encodeURIComponent('Hola ARDE, aqui esta el brief del embajador de Aeromexico:\n\n'+lastText);
-  var fd=new FormData();
-  fd.append('access_key','2d2d2da2-83b7-4fb5-9c56-30d4c46c92f5');
-  fd.append('subject','Brief Embajador Digital - Aeromexico');
-  fd.append('from_name','Formulario Embajador - Aeromexico');
-  fd.append('message',lastText);
-  fileInputs.forEach(function(inp,ix){[].slice.call(inp.files).forEach(function(f,k){fd.append('adjunto_'+ix+'_'+k,f,f.name);});});
   btn.textContent='Enviando...';btn.disabled=true;
-  fetch('https://api.web3forms.com/submit',{method:'POST',body:fd}).then(function(r){return r.json();}).catch(function(){return{success:false};}).then(function(res){
+  fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:'2d2d2da2-83b7-4fb5-9c56-30d4c46c92f5',subject:'Brief Embajador Digital - Aeromexico',from_name:'Formulario Embajador - Aeromexico',message:lastText})}).then(function(r){return r.json();}).catch(function(){return{success:false};}).then(function(res){
     btn.textContent='Enviar brief a ARDE →';btn.disabled=false;
     var note=document.getElementById('ovnote');
-    if(note){ if(res&&res.success){ note.innerHTML = nf>0 ? ('Tu brief y los <b>'+nf+' archivo(s)</b> llegaron a ARDE por correo. Tambi&eacute;n puedes enviarlo por WhatsApp como respaldo.') : 'Tu brief lleg&oacute; a ARDE por correo. Tambi&eacute;n puedes enviarlo por WhatsApp como respaldo.'; }
-      else { note.innerHTML = 'Tu resumen est&aacute; listo. Env&iacute;alo por <b>WhatsApp</b> o desc&aacute;rgalo para que llegue a ARDE'+(nf>0?' (recuerda adjuntar tus '+nf+' archivo(s))':'')+'.'; } }
+    if(note){ if(res&&res.success){ note.innerHTML = nf>0 ? ('Tu brief lleg&oacute; a ARDE por correo. <b>Adjunta tus '+nf+' imagen(es)/archivo(s) por WhatsApp</b> para completarlo.') : 'Tu brief lleg&oacute; a ARDE por correo. Tambi&eacute;n puedes enviarlo por WhatsApp como respaldo.'; }
+      else { note.innerHTML = 'Tu resumen est&aacute; listo. Env&iacute;alo por <b>WhatsApp</b> o desc&aacute;rgalo para que llegue a ARDE'+(nf>0?' (adjunta tus '+nf+' archivo(s))':'')+'.'; } }
     document.getElementById('ov').classList.add('on');
   });
 });
