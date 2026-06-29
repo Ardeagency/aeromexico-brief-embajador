@@ -93,6 +93,12 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--red);bac
 .cp{background:var(--navy-2);color:#fff}
 .dl{background:transparent;color:var(--ink);border:1.5px solid var(--line)!important}
 
+.uploadbtn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;background:var(--navy-2);color:#fff;font-weight:600;font-size:.92rem;padding:12px 22px;border-radius:30px;transition:.18s}
+.uploadbtn:hover{background:var(--navy-3);transform:translateY(-1px)}
+.uploadbtn input{display:none}
+.filelist{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+.filelist .fl{font-size:.82rem;color:var(--slate);background:#fbfaf6;border:1px solid var(--line);border-radius:8px;padding:7px 12px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.filelist .fl b{font-weight:600;color:var(--ink);word-break:break-all}
 footer{background:var(--navy-0);color:var(--mist);text-align:center;padding:40px 0;font-size:.78rem;line-height:1.8}
 footer b{color:var(--red-soft);font-family:var(--fm);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase}
 @media(max-width:560px){.sec{padding:24px 20px}.hero{padding:80px 0 56px}}
@@ -187,6 +193,7 @@ footer b{color:var(--red-soft);font-family:var(--fm);font-size:.62rem;letter-spa
           <label class="chip"><input type="radio" name="vestfijo" value="Fijo"><span>Fijo</span></label>
           <label class="chip"><input type="radio" name="vestfijo" value="Varía por módulo"><span>Varía por módulo</span></label>
         </div></div>
+      <div class="field" data-q="Referencias visuales de vestuario"><label class="q">Referencias visuales de vestuario</label><div class="hint">Sube im&aacute;genes de referencia: uniformes, estilos o ejemplos que les gusten.</div><label class="uploadbtn"><input type="file" accept="image/*" multiple> &#128206; Adjuntar im&aacute;genes</label><div class="filelist"></div></div>
       </section>
 
       <section class="sec">
@@ -210,7 +217,7 @@ footer b{color:var(--red-soft);font-family:var(--fm);font-size:.62rem;letter-spa
 
       <section class="sec">
         <div class="sec-h"><div class="nn">8</div><div><div class="sub">Escenarios</div><h2>Dónde vive</h2></div></div>
-        <div class="field" data-q="Escenarios deseados"><label class="q">¿Qué escenarios quieren? (varios)</label><div class="chips">
+        <div class="field" data-q="Escenarios deseados"><label class="q">¿Qué escenarios quieren? (elige hasta 3)</label><div class="chips">
           <label class="chip"><input type="checkbox" name="esc" value="Estudio de marca"><span>Estudio de marca</span></label>
           <label class="chip"><input type="checkbox" name="esc" value="Sala de transformación digital"><span>Sala de transformación</span></label>
           <label class="chip"><input type="checkbox" name="esc" value="Cabina de avión"><span>Cabina de avión</span></label>
@@ -243,6 +250,7 @@ footer b{color:var(--red-soft);font-family:var(--fm);font-size:.62rem;letter-spa
         <div class="field" data-q="Lo que NO quieren"><label class="q">Personajes / estilos que NO quieren</label><textarea></textarea></div>
         <div class="field" data-q="Inclusión / diversidad"><label class="q">Lineamientos de inclusión / diversidad</label><textarea></textarea></div>
         <div class="field" data-q="Restricciones legales o de marca"><label class="q">Restricciones legales o de marca</label><textarea></textarea></div>
+      <div class="field" data-q="Archivos e im&aacute;genes de referencia"><label class="q">Archivos e im&aacute;genes de referencia</label><div class="hint">Adjunta im&aacute;genes, moodboards o documentos de referencia.</div><label class="uploadbtn"><input type="file" accept="image/*,application/pdf" multiple> &#128206; Adjuntar archivos e im&aacute;genes</label><div class="filelist"></div></div>
       </section>
 
       <div class="submit-row">
@@ -257,7 +265,7 @@ footer b{color:var(--red-soft);font-family:var(--fm);font-size:.62rem;letter-spa
   <div class="ovcard">
     <div class="ck">✓</div>
     <h3>Brief listo</h3>
-    <p>Recibimos tu información en ARDE. Para confirmar el envío, mándalo también por WhatsApp o descárgalo y compártelo con nosotros.</p>
+    <p id="ovnote">Recibimos tu información en ARDE. Para confirmar el envío, mándalo también por WhatsApp o descárgalo y compártelo con nosotros.</p>
     <div class="ovbtns">
       <a class="wa" id="wa" href="#" target="_blank" rel="noopener">Enviar por WhatsApp a ARDE</a>
       <button class="cp" id="cp">Copiar resumen</button>
@@ -275,62 +283,26 @@ footer b{color:var(--red-soft);font-family:var(--fm);font-size:.62rem;letter-spa
 <script>
 var KEY='arde_brief_aeromx';
 var fields=[].slice.call(document.querySelectorAll('.field'));
-/* autosave + restore */
-function save(){var d={};document.querySelectorAll('#brief input,#brief textarea,#brief select').forEach(function(el,i){
-  var k=el.name?('n_'+el.name+'_'+el.value):('i_'+i);
-  if(el.type==='checkbox'||el.type==='radio'){if(el.checked)d[k]=1;}else{d['i_'+i]=el.value;}
-});try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}}
-function restore(){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');
-  document.querySelectorAll('#brief input,#brief textarea,#brief select').forEach(function(el,i){
-    if(el.type==='checkbox'||el.type==='radio'){var k='n_'+el.name+'_'+el.value;if(d[k])el.checked=true;}
-    else if(d['i_'+i]!==undefined)el.value=d['i_'+i];
-  });}catch(e){}}
-function progress(){
-  var done=0;fields.forEach(function(f){
-    var ins=f.querySelectorAll('input,textarea,select');var ok=false;
-    ins.forEach(function(el){if(el.type==='checkbox'||el.type==='radio'){if(el.checked)ok=true;}else if(el.value.trim())ok=true;});
-    if(ok)done++;});
-  var p=Math.round(done/fields.length*100);
-  document.getElementById('barI').style.width=p+'%';
-  document.getElementById('pct').textContent=p+'% completado';
-}
-function compile(){
-  var out='BRIEF DEL EMBAJADOR DIGITAL · AEROMÉXICO\n(generado desde el formulario ARDE)\n\n';
-  document.querySelectorAll('#brief .sec').forEach(function(sec){
-    var t=sec.querySelector('h2').textContent;out+='— '+t.toUpperCase()+' —\n';
-    sec.querySelectorAll('.field').forEach(function(f){
-      var q=f.getAttribute('data-q');var vals=[];
-      f.querySelectorAll('input,textarea,select').forEach(function(el){
-        if(el.type==='checkbox'||el.type==='radio'){if(el.checked)vals.push(el.value);}
-        else if(el.value.trim())vals.push(el.value.trim());});
-      out+='• '+q+': '+(vals.length?vals.join(', '):'(sin responder)')+'\n';
-    });out+='\n';
-  });return out;
-}
-document.querySelectorAll('#brief input,#brief textarea,#brief select').forEach(function(el){
-  el.addEventListener('input',function(){save();progress();});
-  el.addEventListener('change',function(){save();progress();});
-});
+function save(){var d={};document.querySelectorAll('#brief input:not([type=file]),#brief textarea,#brief select').forEach(function(el,i){if(el.type==='checkbox'||el.type==='radio'){if(el.checked)d['n_'+el.name+'_'+el.value]=1;}else{d['i_'+i]=el.value;}});try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}}
+function restore(){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('#brief input:not([type=file]),#brief textarea,#brief select').forEach(function(el,i){if(el.type==='checkbox'||el.type==='radio'){if(d['n_'+el.name+'_'+el.value])el.checked=true;}else if(d['i_'+i]!==undefined)el.value=d['i_'+i];});}catch(e){}}
+function progress(){var done=0;fields.forEach(function(f){var ok=false;f.querySelectorAll('input,textarea,select').forEach(function(el){if(el.type==='file'){if(el.files&&el.files.length)ok=true;}else if(el.type==='checkbox'||el.type==='radio'){if(el.checked)ok=true;}else if(el.value.trim())ok=true;});if(ok)done++;});var p=Math.round(done/fields.length*100);document.getElementById('barI').style.width=p+'%';document.getElementById('pct').textContent=p+'% completado';}
+function compile(){var out='BRIEF DEL EMBAJADOR DIGITAL - AEROMEXICO\n(generado desde el formulario ARDE)\n\n';document.querySelectorAll('#brief .sec').forEach(function(sec){var t=sec.querySelector('h2').textContent;out+='--- '+t.toUpperCase()+' ---\n';sec.querySelectorAll('.field').forEach(function(f){var q=f.getAttribute('data-q');var vals=[];f.querySelectorAll('input,textarea,select').forEach(function(el){if(el.type==='file'){if(el.files)for(var k=0;k<el.files.length;k++)vals.push(el.files[k].name);}else if(el.type==='checkbox'||el.type==='radio'){if(el.checked)vals.push(el.value);}else if(el.value.trim())vals.push(el.value.trim());});out+='- '+q+': '+(vals.length?vals.join(', '):'(sin responder)')+'\n';});out+='\n';});return out;}
+document.querySelectorAll('#brief input,#brief textarea,#brief select').forEach(function(el){el.addEventListener('input',function(){save();progress();});el.addEventListener('change',function(){save();progress();});});
+var esc=[].slice.call(document.querySelectorAll('input[name=esc]'));
+esc.forEach(function(c){c.addEventListener('change',function(){var n=esc.filter(function(x){return x.checked;}).length;esc.forEach(function(x){if(!x.checked)x.disabled=(n>=3);});});});
+document.querySelectorAll('input[type=file]').forEach(function(inp){inp.addEventListener('change',function(){var box=inp.closest('.field').querySelector('.filelist');box.innerHTML='';[].slice.call(inp.files).forEach(function(f){var d=document.createElement('div');d.className='fl';d.innerHTML='<b>'+f.name+'</b><span>'+Math.round(f.size/1024)+' KB</span>';box.appendChild(d);});});});
 restore();progress();
-
 var lastText='';
 document.getElementById('enviar').addEventListener('click',function(){
   lastText=compile();
-  /* enviar a ARDE via ntfy */
-  try{fetch('https://ntfy.sh/arde-cotizaciones-7k2pqz9x',{method:'POST',keepalive:true,
-    headers:{'Title':'Brief Embajador - Aeromexico COMPLETADO','Tags':'tada,memo'},
-    body:lastText.slice(0,3500)});}catch(e){}
-  var msg='Hola ARDE, aquí está el brief del embajador de Aeroméxico:%0A%0A'+encodeURIComponent(lastText).replace(/%2520/g,'%20');
-  document.getElementById('wa').href='https://wa.me/573218300088?text='+msg;
-  document.getElementById('ov').classList.add('on');
-});
-document.getElementById('cp').addEventListener('click',function(){
-  navigator.clipboard.writeText(lastText).then(function(){var b=document.getElementById('cp');b.textContent='¡Copiado!';setTimeout(function(){b.textContent='Copiar resumen';},1800);});
-});
-document.getElementById('dl').addEventListener('click',function(){
-  var a=document.createElement('a');a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(lastText);
-  a.download='Brief_Embajador_Aeromexico.txt';a.click();
-});
+  var nf=0;document.querySelectorAll('input[type=file]').forEach(function(i){nf+=i.files?i.files.length:0;});
+  try{fetch('https://ntfy.sh/arde-cotizaciones-7k2pqz9x',{method:'POST',keepalive:true,headers:{'Title':'Brief Embajador - Aeromexico COMPLETADO','Tags':'tada,memo'},body:lastText.slice(0,3500)});}catch(e){}
+  document.getElementById('wa').href='https://wa.me/573218300088?text='+encodeURIComponent('Hola ARDE, aqui esta el brief del embajador de Aeromexico:\n\n'+lastText);
+  var note=document.getElementById('ovnote');
+  if(note)note.innerHTML = nf>0 ? ('Recibimos tus respuestas. <b>Seleccionaste '+nf+' archivo(s): adj&uacute;ntalos en el WhatsApp o el correo</b> para que lleguen a ARDE.') : 'Recibimos tu informaci&oacute;n en ARDE. Para confirmarlo, env&iacute;ala tambi&eacute;n por WhatsApp o desc&aacute;rgala.';
+  document.getElementById('ov').classList.add('on');});
+document.getElementById('cp').addEventListener('click',function(){navigator.clipboard.writeText(lastText).then(function(){var b=document.getElementById('cp');b.textContent='Copiado!';setTimeout(function(){b.textContent='Copiar resumen';},1800);});});
+document.getElementById('dl').addEventListener('click',function(){var a=document.createElement('a');a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(lastText);a.download='Brief_Embajador_Aeromexico.txt';a.click();});
 document.getElementById('ov').addEventListener('click',function(e){if(e.target===this)this.classList.remove('on');});
 </script>
 <script>
