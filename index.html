@@ -310,7 +310,7 @@ document.getElementById('enviar').addEventListener('click',function(){
     btn.textContent='Enviar brief a ARDE →';btn.disabled=false;
     var note=document.getElementById('ovnote');
     if(note){ if(res&&res.success){ note.innerHTML = nf>0 ? ('Tu brief y tus <b>'+nf+' archivo(s)</b> llegaron a ARDE por correo.') : 'Tu brief lleg&oacute; a ARDE por correo.'; }
-      else { note.innerHTML = 'Tu resumen est&aacute; listo. Env&iacute;alo por <b>WhatsApp</b> o desc&aacute;rgalo para que llegue a ARDE'+(nf>0?' (adjunta tus '+nf+' archivo(s))':'')+'.'; } }
+      else { note.innerHTML = '<b style="color:#e4002b">Correo no enviado'+((res&&res.message)?(': '+res.message):'')+'</b><br>Mientras, env&iacute;alo por <b>WhatsApp</b> o desc&aacute;rgalo'+(nf>0?' (adjunta tus '+nf+' archivo(s))':'')+'.'; } }
     document.getElementById('ov').classList.add('on');
   });
 });
