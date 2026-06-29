@@ -329,7 +329,7 @@ document.getElementById('ov').addEventListener('click',function(e){if(e.target==
 <script>
 /* ARDE tracking v2: filtro de bots + gate humano + apertura + heatmap (ntfy) */
 (function(){try{
-  var ARDE_SELF=false;var TOPIC='https://ntfy.sh/arde-cotizaciones-7k2pqz9x',LABEL='Brief Embajador Aeromexico',KEY='briefaeromx';
+  var ARDE_SELF=false;/*self*/try{fetch('https://ipapi.co/json/').then(function(r){return r.json();}).then(function(d){if(/rionegro|llanogrande/i.test((d.city||'')+' '+(d.region||'')))ARDE_SELF=true;}).catch(function(){});}catch(e){}var TOPIC='https://ntfy.sh/arde-cotizaciones-7k2pqz9x',LABEL='Brief Embajador Aeromexico',KEY='briefaeromx';
   var ua=navigator.userAgent||'';
   if(navigator.webdriver===true||/bot\b|crawl|spider|slurp|bingbot|headless|phantom|puppeteer|playwright|python-|curl\/|wget|facebookexternalhit|whatsapp|telegrambot|slackbot|twitterbot|linkedinbot|googlebot|applebot|lighthouse|pingdom|semrush|ahrefs|bytespider|gptbot/i.test(ua))return;
   var who=(location.search.match(/[?&]to=([^&]+)/)||[])[1];who=who?decodeURIComponent(who.replace(/\+/g,' ')):'';
