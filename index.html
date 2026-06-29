@@ -329,16 +329,16 @@ document.getElementById('ov').addEventListener('click',function(e){if(e.target==
 <script>
 /* ARDE tracking v2: filtro de bots + gate humano + apertura + heatmap (ntfy) */
 (function(){try{
-  var TOPIC='https://ntfy.sh/arde-cotizaciones-7k2pqz9x',LABEL='Brief Embajador Aeromexico',KEY='briefaeromx';
+  var ARDE_SELF=false;var TOPIC='https://ntfy.sh/arde-cotizaciones-7k2pqz9x',LABEL='Brief Embajador Aeromexico',KEY='briefaeromx';
   var ua=navigator.userAgent||'';
   if(navigator.webdriver===true||/bot\b|crawl|spider|slurp|bingbot|headless|phantom|puppeteer|playwright|python-|curl\/|wget|facebookexternalhit|whatsapp|telegrambot|slackbot|twitterbot|linkedinbot|googlebot|applebot|lighthouse|pingdom|semrush|ahrefs|bytespider|gptbot/i.test(ua))return;
   var who=(location.search.match(/[?&]to=([^&]+)/)||[])[1];who=who?decodeURIComponent(who.replace(/\+/g,' ')):'';
   var whoLine=who?('\nDestinatario: '+who):'';
-  function post(t,tg,b){try{fetch(TOPIC,{method:'POST',keepalive:true,headers:{'Title':t,'Tags':tg},body:b});}catch(e){try{navigator.sendBeacon(TOPIC,b);}catch(e2){}}}
+  function post(t,tg,b){if(ARDE_SELF)return;try{fetch(TOPIC,{method:'POST',keepalive:true,headers:{'Title':t,'Tags':tg},body:b});}catch(e){try{navigator.sendBeacon(TOPIC,b);}catch(e2){}}}
   var inter=false;['scroll','mousemove','touchstart','keydown','pointerdown'].forEach(function(ev){window.addEventListener(ev,function(){inter=true;},{passive:true});});
   var vis=0,lv=Date.now();function vt(){if(document.visibilityState==='visible')vis+=Date.now()-lv;lv=Date.now();}setInterval(vt,1000);
   var sent=false;var gi=setInterval(function(){vt();if(sent)return;if((inter&&vis>=2500)||vis>=9000){sent=true;clearInterval(gi);
-    fetch('https://ipapi.co/json/').then(function(r){return r.json();}).then(function(d){
+    fetch('https://ipapi.co/json/').then(function(r){return r.json();}).then(function(d){if(/rionegro|llanogrande/i.test((d.city||'')+' '+(d.region||'')))ARDE_SELF=true;
       post('ARDE - Abrieron: '+LABEL,'eyes','Abrieron el formulario: '+LABEL+whoLine+'\nUbicacion: '+(d.city||'?')+', '+(d.country_name||'?')+'\nDispositivo: '+ua.slice(0,80));
     }).catch(function(){post('ARDE - Abrieron: '+LABEL,'eyes','Abrieron el formulario: '+LABEL+whoLine);});
   }},1000);
