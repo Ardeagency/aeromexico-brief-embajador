@@ -331,7 +331,7 @@ document.getElementById('ov').addEventListener('click',function(e){if(e.target==
 (function(){try{
   var ARDE_SELF=false;/*self*/try{fetch('https://ipapi.co/json/').then(function(r){return r.json();}).then(function(d){if(/rionegro|llanogrande/i.test((d.city||'')+' '+(d.region||'')))ARDE_SELF=true;}).catch(function(){});}catch(e){}var TOPIC='https://ntfy.sh/arde-cotizaciones-7k2pqz9x',LABEL='Brief Embajador Aeromexico',KEY='briefaeromx';
   var ua=navigator.userAgent||'';
-  if(navigator.webdriver===true||/bot\b|crawl|spider|slurp|bingbot|headless|phantom|puppeteer|playwright|python-|curl\/|wget|facebookexternalhit|whatsapp|telegrambot|slackbot|twitterbot|linkedinbot|googlebot|applebot|lighthouse|pingdom|semrush|ahrefs|bytespider|gptbot/i.test(ua))return;
+  if(navigator.webdriver===true||/bot\b|crawl|spider|slurp|bingbot|headless|phantom|puppeteer|playwright|python-|curl\/|wget|facebookexternalhit|whatsapp|telegrambot|slackbot|twitterbot|linkedinbot|googlebot|applebot|lighthouse|pingdom|semrush|ahrefs|bytespider|gptbot|amazonbot|zgrab|censys|shodan|expanse|netcraft|httpx|nmap|masscan|paloalto|internetmeasurement/i.test(ua)||(function(){var m=ua.match(/Chrome\/(\d+)/);return !!m&&+m[1]<90;})())return;
   var who=(location.search.match(/[?&]to=([^&]+)/)||[])[1];who=who?decodeURIComponent(who.replace(/\+/g,' ')):'';
   var whoLine=who?('\nDestinatario: '+who):'';
   function post(t,tg,b){if(ARDE_SELF)return;try{fetch(TOPIC,{method:'POST',keepalive:true,headers:{'Title':t,'Tags':tg},body:b});}catch(e){try{navigator.sendBeacon(TOPIC,b);}catch(e2){}}}
