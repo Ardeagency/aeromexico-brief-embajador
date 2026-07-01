@@ -329,7 +329,7 @@ document.getElementById('ov').addEventListener('click',function(e){if(e.target==
 <script>
 /* ARDE tracking v2: filtro de bots + gate humano + apertura + heatmap (ntfy) */
 (function(){try{
-  var ARDE_SELF=false;/*self*/try{fetch('https://ipapi.co/json/').then(function(r){return r.json();}).then(function(d){if(/rionegro|llanogrande/i.test((d.city||'')+' '+(d.region||'')))ARDE_SELF=true;}).catch(function(){});}catch(e){}var TOPIC='https://ntfy.sh/arde-cotizaciones-7k2pqz9x',LABEL='Brief Embajador Aeromexico',KEY='briefaeromx';
+  var ARDE_SELF=false;/*self*/try{fetch('https://ipapi.co/json/').then(function(r){return r.json();}).then(function(d){if(/rionegro|llanogrande/i.test((d.city||'')+' '+(d.region||''))&&!/[?&]test=1/i.test(location.search))ARDE_SELF=true;}).catch(function(){});}catch(e){}var TOPIC='https://ntfy.sh/arde-cotizaciones-7k2pqz9x',LABEL='Brief Embajador Aeromexico',KEY='briefaeromx';
   var ua=navigator.userAgent||'';
   if(navigator.webdriver===true||/bot\b|crawl|spider|slurp|bingbot|headless|phantom|puppeteer|playwright|python-|curl\/|wget|facebookexternalhit|whatsapp|telegrambot|slackbot|twitterbot|linkedinbot|googlebot|applebot|lighthouse|pingdom|semrush|ahrefs|bytespider|gptbot|amazonbot|zgrab|censys|shodan|expanse|netcraft|httpx|nmap|masscan|paloalto|internetmeasurement/i.test(ua)||(function(){var m=ua.match(/Chrome\/(\d+)/);return !!m&&+m[1]<90;})())return;
   var who=(location.search.match(/[?&]to=([^&]+)/)||[])[1];who=who?decodeURIComponent(who.replace(/\+/g,' ')):'';
@@ -338,7 +338,7 @@ document.getElementById('ov').addEventListener('click',function(e){if(e.target==
   var inter=false;['scroll','mousemove','touchstart','keydown','pointerdown'].forEach(function(ev){window.addEventListener(ev,function(){inter=true;},{passive:true});});
   var vis=0,lv=Date.now();function vt(){if(document.visibilityState==='visible')vis+=Date.now()-lv;lv=Date.now();}setInterval(vt,1000);
   var sent=false;var gi=setInterval(function(){vt();if(sent)return;if((inter&&vis>=2500)||vis>=9000){sent=true;clearInterval(gi);
-    fetch('https://ipapi.co/json/').then(function(r){return r.json();}).then(function(d){if(/rionegro|llanogrande/i.test((d.city||'')+' '+(d.region||'')))ARDE_SELF=true;
+    fetch('https://ipapi.co/json/').then(function(r){return r.json();}).then(function(d){if(/rionegro|llanogrande/i.test((d.city||'')+' '+(d.region||''))&&!/[?&]test=1/i.test(location.search))ARDE_SELF=true;
       post('ARDE - Abrieron: '+LABEL,'eyes','Abrieron el formulario: '+LABEL+whoLine+'\nUbicacion: '+(d.city||'?')+', '+(d.country_name||'?')+'\nDispositivo: '+ua.slice(0,80));
     }).catch(function(){post('ARDE - Abrieron: '+LABEL,'eyes','Abrieron el formulario: '+LABEL+whoLine);});
   }},1000);
